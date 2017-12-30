@@ -13,6 +13,8 @@ pipelineJob(jobName) {
 										url("git://github.com/${project}.git")
 									}
 									branch(branchName)
+                  // Jenkinsfile or JenkinsFile?
+                  scriptPath('Jenkinsfile')
 								}
             }
         }
