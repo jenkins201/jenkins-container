@@ -16,6 +16,5 @@ docker run \
   --name jenkins201_jenkins \
   ${TARGET_CONTAINER}
 
-docker rm jenkins201_jenkins
 docker rmi ${TARGET_CONTAINER}
 docker volume rm jenkins-data
