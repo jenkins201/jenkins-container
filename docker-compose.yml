@@ -1,0 +1,35 @@
+version: "3"
+services:
+  jenkins:
+    user: root
+    build: .
+    image: jenkins201_jenkins:latest
+    container_name: jenkins201_jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+
+# https://github.com/JFrogDev/artifactory-docker-examples/blob/master/docker-compose/artifactory-oss.yml
+  artifactory:
+    image: docker.bintray.io/jfrog/artifactory-oss:5.8.0
+    container_name: jenkins201_artifactory
+    ports:
+     - 8081:8081
+    volumes:
+     - artifactory_data:/var/opt/jfrog/artifactory
+#    Add extra Java options by uncommenting the following lines
+#    environment:
+#     - EXTRA_JAVA_OPTIONS=-Xmx4g
+    restart: always
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000
+
+volumes:
+  jenkins-data:
+  artifactory_data:
