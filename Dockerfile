@@ -5,4 +5,4 @@ FROM jenkinsci/blueocean
 COPY jobs/jenkins-container-seed-job/config.xml /var/jenkins_home/jobs/jenkins-container-seed-job/config.xml
 # Install the the plugins we need
 # docker-workflow:1.15 has the fix for container detection on Docker for Mac
-RUN /usr/local/bin/install-plugins.sh job-dsl docker-workflow:1.15 docker-slaves github-branch-source workflow-aggregator artifactory command-launcher
+RUN /usr/local/bin/install-plugins.sh job-dsl docker-workflow:1.15 docker-slaves github-branch-source workflow-aggregator artifactory command-launcher aws-credentials ansicolor
