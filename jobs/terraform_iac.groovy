@@ -4,9 +4,7 @@ def jobName = "${project}".replaceAll('/','-')
 multibranchPipelineJob(jobName) {
     branchSources {
         git {
-            remote {
-              url("git://github.com/${project}.git")
-            }
+            remote("git://github.com/${project}.git")
         }
     }
     orphanedItemStrategy {
