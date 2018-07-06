@@ -25,4 +25,5 @@ You'll then be able to open the UI's:
 
 * https://www.developer.com/design/creating-a-reproducible-and-portable-development-environment.html
 * https://github.com/cloudify-cosmo/cloudify-packager/tree/master/image-builder/quickstart-vagrantbox
+* Convert AMI to Vagrant/VirtualBox: https://github.com/cloudify-cosmo/cloudify-image-bakery/blob/master/quickstart/nightly-builder.py
 * https://github.com/CircleCI-Public/circleci-packer
