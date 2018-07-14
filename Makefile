@@ -1,4 +1,4 @@
-CONTAINER_NAME=jenkins201_jenkins
+CONTAINER_NAME=jenkins201/jenkins201_jenkins
 IMAGE_NAME=$(CONTAINER_NAME):latest
 JENKINS_HOME_VOLUME=$(CONTAINER_NAME)_home
 
@@ -22,6 +22,9 @@ build:
 
 run:	build
 	$(DOCKER_RUN)
+
+push:
+	docker push $(IMAGE_NAME)
 
 clean:
 	-docker volume rm $(JENKINS_HOME_VOLUME)
