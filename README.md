@@ -9,6 +9,7 @@ You'll then be able to open the UI's:
 * Jenkins [http://localhost:8080](http://localhost:8080)
 * Artifactory: [http://localhost:8081/artifactory/webapp/#/home](http://localhost:8081/artifactory/webapp/#/home)
 
+Docker Hub autobuild images are here: [https://hub.docker.com/r/jenkins201/jenkins-container/](https://hub.docker.com/r/jenkins201/jenkins-container/)
 # Reading/Future Work
 
 * Build on git tag push: https://groups.google.com/forum/#!topic/jenkinsci-dev/0RHUNDhyhog
