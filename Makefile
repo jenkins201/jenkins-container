@@ -1,4 +1,4 @@
-CONTAINER_NAME=jenkins201/jenkins201_jenkins
+CONTAINER_NAME=jenkins201/jenkins-container
 IMAGE_NAME=$(CONTAINER_NAME):latest
 JENKINS_HOME_VOLUME=$(CONTAINER_NAME)_home
 

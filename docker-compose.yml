@@ -2,7 +2,7 @@ version: "3"
 services:
   jenkins:
     user: root
-    image: jenkins201/jenkins201_jenkins:latest
+    image: jenkins201/jenkins-container:latest
     container_name: jenkins201_jenkins
     ports:
       - "8080:8080"
