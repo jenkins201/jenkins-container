@@ -28,3 +28,4 @@ Docker Hub autobuild images are here: [https://hub.docker.com/r/jenkins201/jenki
 * https://github.com/cloudify-cosmo/cloudify-packager/tree/master/image-builder/quickstart-vagrantbox
 * Convert AMI to Vagrant/VirtualBox: https://github.com/cloudify-cosmo/cloudify-image-bakery/blob/master/quickstart/nightly-builder.py
 * https://github.com/CircleCI-Public/circleci-packer
+* https://github.com/bitflight-public/terraform-aws-ssm-ami-bakery
