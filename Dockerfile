@@ -16,3 +16,5 @@ USER jenkins
 COPY jobs/jenkins-container-seed-job/config.xml /var/jenkins_home/jobs/jenkins-container-seed-job/config.xml
 # Install the the plugins we need
 RUN /usr/local/bin/install-plugins.sh job-dsl blueocean docker-workflow docker-slaves github-branch-source workflow-aggregator artifactory command-launcher aws-credentials ansicolor
+# init.groovy.d based config
+COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
