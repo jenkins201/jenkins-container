@@ -1,5 +1,12 @@
 # jenkins-container
 
+If you want to use this container with your own jobs & projects, you'll need to fork the [https://github.com/jenkins201/jenkins-container](https://github.com/jenkins201/jenkins-container) repo on GitHub first, so that you can make changes to:
+ 
+* `jobs/jenkins-container-seed-job/config.xml` - this seed job will need updated to point to your own fork, so that your own Job DSL defined jobs are collected, see lines 7 & 15. (this build clones [https://github.com/jenkins201/jenkins-container/](https://github.com/jenkins201/jenkins-container/) to get at the Job DSL definition in [https://github.com/jenkins201/jenkins-container/tree/master/jobs](https://github.com/jenkins201/jenkins-container/tree/master/jobs)
+* `jobs/packer_terraform_cicd_aws.groovy` - line 1, update the GitHub project name if you want to use your own fork of this project. 
+
+## Quick Start
+
 Use `docker-compose` to build & start the jenkins & artifactory containers:
 
     docker-compose up
