@@ -20,4 +20,3 @@ clean:
 	-docker rm jenkins201_artifactory
 	-docker volume rm $(PROJECT_NAME)_jenkins_data
 	-docker volume rm $(PROJECT_NAME)_artifactory_data
-	-docker rmi $(IMAGE_NAME)
