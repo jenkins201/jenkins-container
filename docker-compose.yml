@@ -9,7 +9,7 @@ services:
       - "8080:8080"
       - "50000:50000"
     volumes:
-      - jenkins-data:/var/jenkins_home
+      - jenkins_data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
 
 # https://github.com/JFrogDev/artifactory-docker-examples/blob/master/docker-compose/artifactory-oss.yml
@@ -32,5 +32,5 @@ services:
         hard: 40000
 
 volumes:
-  jenkins-data:
+  jenkins_data:
   artifactory_data:
