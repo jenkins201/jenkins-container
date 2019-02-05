@@ -5,10 +5,11 @@ IMAGE_NAME=$(CONTAINER_NAME):latest
 all: 	build
 
 build:
-	docker build -t $(IMAGE_NAME) .
+	docker build --pull -t $(IMAGE_NAME) .
 
 run:  build
-	docker-compose --project-name $(PROJECT_NAME) up
+	#docker-compose --project-name $(PROJECT_NAME) up
+	docker-compose up
 
 push:
 	docker push $(IMAGE_NAME)

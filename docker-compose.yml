@@ -11,26 +11,13 @@ services:
     volumes:
       - jenkins_data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-
-# https://github.com/JFrogDev/artifactory-docker-examples/blob/master/docker-compose/artifactory-oss.yml
-  artifactory:
-    image: docker.bintray.io/jfrog/artifactory-oss:5.8.0
-    hostname: jenkins201_artifactory
-    container_name: jenkins201_artifactory
-    ports:
-     - 8081:8081
-    volumes:
-     - artifactory_data:/var/opt/jfrog/artifactory
-#    Add extra Java options by uncommenting the following lines
-#    environment:
-#     - EXTRA_JAVA_OPTIONS=-Xmx4g
-    restart: always
-    ulimits:
-      nproc: 65535
-      nofile:
-        soft: 32000
-        hard: 40000
+        #- /Users/smccartney/src/jenkins201/jenkins-container/jenkins.yaml:/opt/jenkins/jenkins.yaml
+      - ${PWD}/jenkins.yaml:/opt/jenkins/jenkins.yaml
+    environment:
+      - CASC_JENKINS_CONFIG=/opt/jenkins/jenkins.yaml
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - GITHUB_API_TOKEN=${GITHUB_API_TOKEN}
 
 volumes:
   jenkins_data:
-  artifactory_data:

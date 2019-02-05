@@ -13,8 +13,7 @@ USER jenkins
 # Copy our seed job in to the container - this will then get persisted to
 # the volume created on demand the first time we start the container with a
 # volume mounted into /var/jenkins_home
-COPY jobs/jenkins-container-seed-job/config.xml /var/jenkins_home/jobs/jenkins-container-seed-job/config.xml
+# COPY jobs/jenkins-container-seed-job/config.xml /var/jenkins_home/jobs/jenkins-container-seed-job/config.xml
 # Install the the plugins we need
-RUN /usr/local/bin/install-plugins.sh job-dsl blueocean docker-workflow docker-slaves github-branch-source workflow-aggregator artifactory command-launcher aws-credentials ansicolor
-# init.groovy.d based config
-COPY executors.groovy /usr/share/jenkins/ref/init.groovy.d/executors.groovy
+ENV JENKINS_UC_DOWNLOAD https://updates.jenkins.io
+RUN /usr/local/bin/install-plugins.sh job-dsl blueocean docker-workflow docker-slaves github-branch-source workflow-aggregator artifactory command-launcher credentials aws-java-sdk aws-credentials ansicolor role-strategy azure-credentials permissive-script-security configuration-as-code configuration-as-code-support test-results-analyzer

@@ -1,0 +1,71 @@
+# https://github.com/hmcts/cnp-jenkins-config-as-code/blob/master/jenkins.yaml
+
+jenkins:
+  systemMessage: This jenkins is managed by configuration as code
+  numExecutors: 5
+  # Prevent Cross Site Request Forgery exploits
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+
+# credentials requires both configuration-as-code and configuration-as-code-support installed
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - aws:
+              scope: GLOBAL
+              id: "demo-aws-creds"
+              accessKey: ${AWS_ACCESS_KEY_ID}
+              secretKey: ${AWS_SECRET_ACCESS_KEY}
+              description: "demo-aws-creds"
+          - usernamePassword:
+              scope: GLOBAL
+              id: "demo-aws-creds-up"
+              username: ${AWS_ACCESS_KEY_ID}
+              password: ${AWS_SECRET_ACCESS_KEY}
+              description: "AWS IAM Credentials - aws-credentials is broken!"
+          - usernamePassword:
+              scope: GLOBAL
+              id: github-api-token
+              username: simonmcc
+              password: ${GITHUB_API_TOKEN}
+              description: "github API token cfgmgmtcmp-2019-iac-ci-cd"
+
+security:
+  remotingCLI:
+    enabled: false
+
+jobs:
+  - script: |
+      def project = 'simonmcc/cfgmgmtcmp-2019-iac-ci-cd'
+      def jobName = "${project}".replaceAll('/','-')
+      multibranchPipelineJob(jobName) {
+          branchSources {
+              branchSources {
+                github {
+                  id(project)
+                  scanCredentialsId('github-api-token')
+                  repoOwner('simonmcc')
+                  repository('cfgmgmtcmp-2019-iac-ci-cd')
+
+                  buildForkPRHead(false)
+                  buildForkPRMerge(false)
+
+                  buildOriginBranch(true)
+                  buildOriginBranchWithPR(false)
+                  buildOriginPRHead(true)
+                  buildOriginPRMerge(false)
+                }
+              }
+          }
+          orphanedItemStrategy {
+              discardOldItems {
+                  numToKeep(20)
+              }
+          }
+          // scan for branches once a day, GitHub webhook should trigger as required
+          triggers {
+              cron('@daily')
+          }
+      }
